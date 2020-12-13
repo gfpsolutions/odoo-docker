@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 # set the postgres database host, port, user and password according to the environment
@@ -8,6 +7,11 @@ set -e
 #: ${PORT:=${DB_PORT_5432_TCP_PORT:=5432}}
 #: ${USER:=${DB_ENV_POSTGRES_USER:=${POSTGRES_USER:='odoo'}}}
 #: ${PASSWORD:=${DB_ENV_POSTGRES_PASSWORD:=${POSTGRES_PASSWORD:='odoo'}}}
+
+# S3 Mounting
+echo $AWS_ACCESS_KEY:$AWS_SECRET_ACCESS_KEY > /root/.passwd-s3fs
+chmod 600 /root/.passwd-s3fs
+s3fs $S3_BUCKET_NAME -o use_cache=/tmp -o passwd_file=/root/.passwd-s3fs -o allow_other $S3_MOUNT_DIRECTORY
 
 DB_ARGS=()
 function check_config() {
