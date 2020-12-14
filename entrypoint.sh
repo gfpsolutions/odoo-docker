@@ -8,10 +8,7 @@ set -e
 #: ${USER:=${DB_ENV_POSTGRES_USER:=${POSTGRES_USER:='odoo'}}}
 #: ${PASSWORD:=${DB_ENV_POSTGRES_PASSWORD:=${POSTGRES_PASSWORD:='odoo'}}}
 
-# S3 Mounting
-echo $AWS_ACCESS_KEY:$AWS_SECRET_ACCESS_KEY > /root/.passwd-s3fs
-chmod 600 /root/.passwd-s3fs
-s3fs $S3_BUCKET_NAME -o use_cache=/tmp -o passwd_file=/root/.passwd-s3fs -o allow_other $S3_MOUNT_DIRECTORY
+# Custom Addons 
 cd $S3_MOUNT_DIRECTORY_ADDONS
 git clone -b $ODOO_VERSION --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/odoo/enterprise
 cd $S3_MOUNT_DIRECTORY_ADDONS/custom

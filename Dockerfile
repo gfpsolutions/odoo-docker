@@ -39,31 +39,6 @@ RUN set -x; \
         && apt-get install -y --no-install-recommends ./wkhtmltox.deb \
         && rm -rf /var/lib/apt/lists/* wkhtmltox.deb
 
-RUN set -x; \
-        rm -rf /usr/src/s3fs-fuse
-
-# Install aws s3 dependencies 
-RUN set -x; \
-        apt-get update \
-        && apt-get install -y --no-install-recommends \
-        fuse \
-        libc6 \
-        libcurl3-gnutls \
-        libfuse2 \
-        libgcc1 \
-        libgcrypt20 \
-        libgnutls30 \
-        libstdc++6 \
-        libxml2 \
-        mime-support 
-
-RUN set -x; \
-        apt-get update \
-        && apt-get install -y --no-install-recommends \
-        s3fs 
-
-
-
 # install latest postgresql-client
 RUN set -x; \
         echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
