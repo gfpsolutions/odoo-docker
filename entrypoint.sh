@@ -12,6 +12,11 @@ set -e
 echo $AWS_ACCESS_KEY:$AWS_SECRET_ACCESS_KEY > /root/.passwd-s3fs
 chmod 600 /root/.passwd-s3fs
 s3fs $S3_BUCKET_NAME -o use_cache=/tmp -o passwd_file=/root/.passwd-s3fs -o allow_other $S3_MOUNT_DIRECTORY
+cd $S3_MOUNT_DIRECTORY_ADDONS
+git clone -b $ODOO_VERSION --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/odoo/enterprise
+cd $S3_MOUNT_DIRECTORY_ADDONS/custom
+git clone -b $GITHUB_CUSTOM_MODULE_BRANCH --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/gfpsolutions/$GITHUB_CUSTOM_MODULE
+chown -R odoo $S3_MOUNT_DIRECTORY_ADDONS 
 
 DB_ARGS=()
 function check_config() {

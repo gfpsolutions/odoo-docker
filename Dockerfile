@@ -15,6 +15,7 @@ RUN set -x; \
         && apt-get install -y --no-install-recommends \
         ca-certificates \
         curl \
+        git \
         dirmngr \
         fonts-noto-cjk \
         gnupg \
@@ -112,6 +113,7 @@ COPY ./odoo.conf /etc/odoo/
 RUN set -x; \
         chown odoo /etc/odoo/odoo.conf \
         && mkdir -p /mnt/extra-addons \
+        && mkdir -p /mnt/extra-addons/custom \
         && chown -R odoo /mnt/extra-addons
 VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]
 
