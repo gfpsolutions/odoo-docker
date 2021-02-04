@@ -15,7 +15,7 @@ cd $S3_MOUNT_DIRECTORY_ADDONS/custom
 git clone -b $GITHUB_CUSTOM_MODULE_BRANCH --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/gfpsolutions/$GITHUB_CUSTOM_MODULE
 git clone -b master --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/gfpsolutions/delivery_ss
 chown -R odoo $S3_MOUNT_DIRECTORY_ADDONS 
-pip3 install holidays
+pip3 install holidays==0.10.3
 
 DB_ARGS=()
 function check_config() {
