@@ -16,6 +16,7 @@ git clone -b $GITHUB_CUSTOM_MODULE_BRANCH --single-branch --depth 1 https://$GIT
 git clone -b master --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/gfpsolutions/delivery_ss
 chown -R odoo $S3_MOUNT_DIRECTORY_ADDONS 
 pip3 install holidays==0.10.3
+pip3 install easypost
 
 DB_ARGS=()
 function check_config() {
