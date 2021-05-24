@@ -14,6 +14,8 @@ git clone -b $ODOO_VERSION --single-branch --depth 1 https://$GITHUB_ACCESS_TOKE
 cd $S3_MOUNT_DIRECTORY_ADDONS/custom
 git clone -b $GITHUB_CUSTOM_MODULE_BRANCH --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/gfpsolutions/$GITHUB_CUSTOM_MODULE
 git clone -b master --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/gfpsolutions/delivery_ss
+git clone -b main --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/gfpsolutions/web_gantt_native
+git clone -b main --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/gfpsolutions/web_widget_time_delta
 chown -R odoo $S3_MOUNT_DIRECTORY_ADDONS 
 pip3 install holidays==0.10.3
 pip3 install easypost
