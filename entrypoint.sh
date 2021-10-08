@@ -21,6 +21,7 @@ git clone -b main --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.
 chown -R odoo $S3_MOUNT_DIRECTORY_ADDONS 
 pip3 install holidays==0.10.3
 pip3 install easypost
+pip3 install dropbox
 
 DB_ARGS=()
 function check_config() {
