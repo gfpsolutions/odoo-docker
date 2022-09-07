@@ -10,7 +10,8 @@ set -e
 
 # Custom Addons 
 cd $S3_MOUNT_DIRECTORY_ADDONS
-git clone -b $ODOO_VERSION --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/gfpsolutions/enterprise
+#git clone -b $ODOO_VERSION --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/odoo/enterprise
+git clone https://$GITHUB_ACCESS_TOKEN@github.com/odoo/enterprise
 cd $S3_MOUNT_DIRECTORY_ADDONS/custom
 git clone -b $GITHUB_CUSTOM_MODULE_BRANCH --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/gfpsolutions/$GITHUB_CUSTOM_MODULE
 git clone -b master --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/gfpsolutions/delivery_ss
