@@ -23,6 +23,7 @@ chown -R odoo $S3_MOUNT_DIRECTORY_ADDONS
 pip3 install holidays==0.10.3
 pip3 install easypost
 pip3 install dropbox
+pip3 install plaid-python
 
 DB_ARGS=()
 function check_config() {
