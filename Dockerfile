@@ -70,6 +70,11 @@ RUN set -x; \
         && npm install -g rtlcss \
         && rm -rf /var/lib/apt/lists/*
 
+# Install Odoo Python Dependencies
+COPY requirements.txt ./
+RUN pip3 install --no-cache-dir psycopg2==2.7.3.1
+RUN pip3 install --no-cache-dir -r requirements.txt
+
 # Install Odoo
 ENV ODOO_VERSION 12.0
 ARG ODOO_RELEASE=20210111
