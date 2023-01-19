@@ -20,7 +20,6 @@ RUN set -x; \
         dirmngr \
         fonts-noto-cjk \
         gnupg \
-        libssl1.0-dev \
         gcc \
         g++ \
         libsasl2-dev \
