@@ -12,7 +12,7 @@ RUN set -x; \
 # Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
 RUN set -x; \
         apt-get update \
-        && apt-get install -y --no-install-recommends \
+        && apt-get install -y --no-install-recommends --allow-downgrades \
         ca-certificates \
         apt-transport-https \
         curl \
@@ -21,7 +21,15 @@ RUN set -x; \
         fonts-noto-cjk \
         gnupg \
         libssl1.0-dev \
+        gcc \
+        g++ \
+        libsasl2-dev \
+        libldap2-dev \
+        libssl-dev \
+        libpq5=9.6.24-0+deb9u1 \
+        libpq-dev \
         node-less \
+        python3-dev \
         python3-num2words \
         python3-pip \
         python3-phonenumbers \
@@ -39,6 +47,11 @@ RUN set -x; \
         && echo '7e35a63f9db14f93ec7feeb0fce76b30c08f2057 wkhtmltox.deb' | sha1sum -c - \
         && apt-get install -y --no-install-recommends ./wkhtmltox.deb \
         && rm -rf /var/lib/apt/lists/* wkhtmltox.deb
+
+# Install Odoo Python Dependencies
+COPY requirements.txt ./
+RUN pip3 install --no-cache-dir --upgrade pip \
+        && pip3 install --no-cache-dir -r requirements.txt
 
 # install latest postgresql-client
 RUN set -x; \
@@ -69,11 +82,6 @@ RUN set -x; \
         && apt-get install --no-install-recommends -y nodejs \
         && npm install -g rtlcss \
         && rm -rf /var/lib/apt/lists/*
-
-# Install Odoo Python Dependencies
-COPY requirements.txt ./
-RUN pip3 install --no-cache-dir psycopg2==2.7.3.1
-RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Install Odoo
 ENV ODOO_VERSION 12.0
