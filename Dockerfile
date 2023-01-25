@@ -41,10 +41,6 @@ RUN set -x; \
         python3-watchdog \
         python3-xlrd \
         python3-xlwt \
-        python3-holidays=0.10.3 \
-        python3-easypost=6.0.1 \
-        python3-dropbox=11.36.0 \
-        python3-plaid-python=11.3.0 \
         xz-utils \
         && curl -o wkhtmltox.deb -sSL https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb \
         && echo '7e35a63f9db14f93ec7feeb0fce76b30c08f2057 wkhtmltox.deb' | sha1sum -c - \
