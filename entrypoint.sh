@@ -22,10 +22,10 @@ git clone -b main --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.
 git clone -b main --single-branch --depth 1 https://$GITHUB_ACCESS_TOKEN@github.com/gfpsolutions/quick_search_customize
 chown -R odoo $S3_MOUNT_DIRECTORY_ADDONS 
 
-pip3 install holidays=0.10.3
-pip3 install easypost=6.0.1
-pip3 install dropbox=11.36.0
-pip3 install plaid-python=11.3.
+pip3 install 'holidays==0.10.3'
+pip3 install 'easypost==6.0.1'
+pip3 install 'dropbox==11.36.0'
+pip3 install 'plaid-python'
 
 DB_ARGS=()
 function check_config() {
