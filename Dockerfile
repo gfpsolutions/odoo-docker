@@ -1,4 +1,4 @@
-FROM python:3.7-slim-stretch
+FROM debian:stretch-slim
 
 SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
 
@@ -12,23 +12,15 @@ RUN set -x; \
 # Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
 RUN set -x; \
         apt-get update \
-        && apt-get install -y --no-install-recommends --allow-downgrades \
+        && apt-get install -y --no-install-recommends \
         ca-certificates \
-        apt-transport-https \
         curl \
         git \
         dirmngr \
         fonts-noto-cjk \
         gnupg \
-        gcc \
-        g++ \
-        libsasl2-dev \
-        libldap2-dev \
-        libssl-dev \
-        libpq5=9.6.24-0+deb9u1 \
-        libpq-dev \
+        libssl1.0-dev \
         node-less \
-        python3-dev \
         python3-num2words \
         python3-pip \
         python3-phonenumbers \
@@ -49,7 +41,7 @@ RUN set -x; \
 
 # install latest postgresql-client
 RUN set -x; \
-        echo 'deb http://apt-archive.postgresql.org/pub/repos/apt/ stretch-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
+        echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
         && GNUPGHOME="$(mktemp -d)" \
         && export GNUPGHOME \
         && repokey='B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8' \
